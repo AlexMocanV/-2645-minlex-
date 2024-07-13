@@ -1,0 +1,35 @@
+#include <iostream>
+#include <stack> 
+std::stack<char>s;
+std::stack<char>ptafisare;
+int main()
+{
+    int n,cop;
+    std::cin>>n;
+    std::string c;
+    std::cin>>c;
+    for(int i=0;i<c.length();i++)
+    {
+        while(!s.empty()&&n>0&&c[i]<s.top())
+        {
+            s.pop();
+            n--;
+        }
+        s.push(c[i]);
+    }
+    while(n>0&&!s.empty()){
+        s.pop();
+        n--;
+    }
+    while(!s.empty())
+    {
+        ptafisare.push(s.top());
+        s.pop();
+    }
+    while(!ptafisare.empty())
+    {
+        std::cout<<ptafisare.top();
+        ptafisare.pop();
+    }
+    return 0;
+}
